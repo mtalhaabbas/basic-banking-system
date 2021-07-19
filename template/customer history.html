@@ -1,4 +1,5 @@
-{% extends "base.html" %} {% load static %} {% block content %}
+ {% load static %}
+
 <head>
     
     <link rel="stylesheet" href="{% static 'css/customer list.css' %}">
@@ -66,19 +67,40 @@ button:hover {
     .container{
         position: relative;
     }
-
+@media screen and (max-width: 500px) {
+    table {
+        font-size: 15px;
+    }
+    h2
+    {
+        font-size: 16px;
+    }
+    .container {
+        margin: 14px auto;
+        padding: 11px 18px;
+    }
+     p {
+        margin: 6px;
+        font-size: 15px;
+    }
+     button {
+        
+         font-size: 14px;
+         padding: 5px 6px;
+     }
+}
 </style>
 </head>
 
-    <div class="container" id="container">
-    <style type="text/css">
-	@media print {
-    @page {size: A4 ;}}</style>
-
+<body>
+    <header id="head">
+        <h1>Basic Banking System</h1>
+    </header>
+    <div class="container">
             <div class="cross_button" onclick="window.history.back()">
                <img src="{% static 'img/arrow_back.svg' %}" alt="">
             </div>
-    <button onclick="printDiv('Customer_detail')"> Print Statement</button>
+    <button onclick="printDiv()"> Print Statement</button>
         <div class="cust_detail" id="Customer_detail">
         <h2>Customer Account Statement</h2>
         <div class="acc_detail">
@@ -96,7 +118,7 @@ button:hover {
         </div>
 
         <div class="arr_table">
-            <h3>Account Transactions Details</h3>
+            <h3>Account Transcations Details</h3>
             <table>
                 <thead>
                     <tr>
@@ -131,25 +153,25 @@ button:hover {
 
 
 
+
             </table>
-<h3>Closing Balance: ${{ user.current_balance|floatformat:2 }}</h3>
+        <h3>Closing Balance: ${{ user.current_balance|floatformat:2 }}</h3>
         </div>
 
-       
+
         </div>
     </div>
+</body>
+    <script>
+    function printDiv() {
+        var printContents = document.getElementById('Customer_detail').innerHTML;
+        var originalContents = document.body.innerHTML;
 
-   <script type="text/javascript">
-	function printDiv(divName) {
-     var printContents = document.getElementById(divName).innerHTML;
-     var originalContents = document.body.innerHTML;
+        document.body.innerHTML = printContents;
 
-     document.body.innerHTML = printContents;
+        window.print();
 
-     window.print();
+        document.body.innerHTML = originalContents;
 
-     document.body.innerHTML = originalContents;
-	 //location.reload();
-}
-</script>
-    {% endblock %}
+    }
+    </script>
