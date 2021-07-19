@@ -1,0 +1,69 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<head>
+ 
+    <link rel="stylesheet" href="{% static 'css/single customer.css' %}">
+
+<style>
+    .row{
+        display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    }
+    button{
+        display: inline-block;
+    }
+    .cross_button img{
+    position: absolute;
+    top: 4px;
+    left: 8px;
+    font-size: 22px;
+    padding: 10px;
+    clip-path: circle(50% at 50% 50%);
+    cursor: pointer;
+}
+    .container{
+        position: relative;
+        padding-top: 50px;
+    }
+    .row2{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+</style>
+</head>
+
+    <div class="container">
+            <div class="cross_button" onclick="window.history.back()">
+               <img src="{% static 'img/arrow_back.svg' %}" alt="">
+            </div>
+        <h2>Customer Details</h2>
+        <div class="con">
+            <div class="row">
+                <div class="row1">
+                <p><b>Account Type:</b>&nbsp;{{c.account_type}}</p>
+                <p><b>Full Name:</b>&nbsp;{{c.full_name}}</p>
+                <p><b>Account Opening Date:</b>&nbsp;{{c.created_at|date}}</p>
+                </div>
+                <div class="row1">
+                <p><b>Account Number:</b>&nbsp;{{c.account_number}}</p>
+                <p><b>Email:</b>&nbsp;{{c.email}}</p>
+                <p><b>Postal Address:</b>&nbsp;{{c.address}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <p><b>Current Balance:</b>&nbsp;<span id="total_amount">${{c.current_balance|floatformat:2}}</span></p>
+            </div>
+
+
+            <div class="row2">
+                <button onclick="window.location.href='/transfer-money/{{c.account_number}}';">Transfer Money</button>
+                <button onclick="window.location.href='/account-statement/{{c.account_number}}';">Account Statement</button>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

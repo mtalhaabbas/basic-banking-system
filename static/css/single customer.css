@@ -1,0 +1,172 @@
+
+/* header  */
+
+
+
+*{
+    padding: 0%;
+    margin: 0%;
+}
+header{
+    z-index: 1;
+    background-color: #60ba5f;  
+    width: 100%;
+}
+header h1 {
+    color: white;
+    font-size: 27px;
+    padding: 10px 0 10px 10px;
+    
+}
+
+
+
+
+/* customer list  */
+
+
+.container {
+    display: block;
+    margin: 30px auto;
+    
+    width: 80%;
+    box-shadow: 1px 4px 21px 3px rgb(229 229 229 / 98%);
+    border: 5px solid white;
+    padding: 20px 30px;
+    border-radius: 7px;
+}
+
+
+p{
+    margin: 10px;
+    font-size: 20px;
+}
+
+button{
+    background: transparent;
+    font-size: 17px;
+    /* color: white; */
+    padding: 10px 18px;
+    display: block;
+    border-radius: 4px;
+    margin: 20px 9px;
+    border: 2px solid #60ba5f;
+    transition: 0.7s ease-in;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #60ba5f;
+    color: white;
+}
+b{
+    color: #60ba5f;
+}
+
+.con {
+    margin: 10px 0px;
+}
+.conn{
+    margin: 15px 15px;
+}
+
+select{
+    width: 270px;
+    font-size: 16px;
+    border: 2px solid black;
+    border-radius: 4px;
+    margin: 10px 10px;
+    padding: 6px 10px;
+   
+}
+
+input{
+    width: 240px;
+    font-size: 16px;
+    border: 2px solid black;
+    border-radius: 4px;
+    margin: 6px 10px;
+    padding: 6px 13px;
+}
+input::placeholder{
+    color: black;
+}
+.popup{ 
+    position: fixed;  
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+    z-index: 2;
+    animation: slide-bottom .5s ease-in;
+    padding: 20px;
+    display: none;
+}
+@keyframes slide-bottom {
+    0%{
+        top: 40%;
+    }
+   
+    100%{
+        top: 50%;
+    }
+}
+
+
+/* popup 1  */
+
+.cross_button img{
+    position: absolute;
+    top: 4px;
+    right: 8px;
+    font-size: 22px;
+    padding: 10px;
+    clip-path: circle(50% at 50% 50%);
+    cursor: pointer;
+}
+.cross_button i:hover{
+    background-color: rgba(245, 245, 245, 0.651);
+}
+
+
+.popup button{
+    margin: 10px 9px;
+    padding: 8px 10px;
+}
+
+
+
+@media screen and (max-width:500px) {
+    p {
+        margin: 6px;
+        font-size: 15px;
+    }
+    button {
+        background: transparent;
+        font-size: 14px;
+        /* color: white; */
+        padding: 7px 7px;
+        display: block;
+        border-radius: 4px;
+        margin: 12px 9px;
+    }
+    select {
+        width: 190px;
+        font-size: 14px;
+        border: 2px solid black;
+        border-radius: 4px;
+        margin: 6px 5px;
+        padding: 4px 6px;
+    }
+    .popup{
+        padding: 10px;
+    }
+    .container {
+        
+        padding: 20px 13px;
+    }
+    h2{
+        font-size: 17px
+    }
+}

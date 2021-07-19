@@ -1,0 +1,155 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<head>
+    
+    <link rel="stylesheet" href="{% static 'css/customer list.css' %}">
+    <title>Customer Account Statement</title>
+<style>
+    b{
+    color: #60ba5f;
+}
+    p{
+    margin: 10px;
+    font-size: 20px;
+}
+    button{
+    background: transparent;
+    font-size: 17px;
+    /* color: white; */
+    padding: 10px 18px;
+    display: block;
+    border-radius: 4px;
+    margin: 31px 0px 10px 10px;
+    border: 2px solid #60ba5f;
+    transition: 0.7s ease-in;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #60ba5f;
+    color: white;
+}
+
+    h3{
+        margin: 20px 0px;
+        text-align: center;
+    }
+    h2 {
+        margin-bottom: 20px;
+        text-align: center;
+}
+    table{
+        margin-bottom: 40px;
+    }
+    .arr_table{
+        position: relative;
+    }
+    #empty_msg{
+        position: absolute;
+        bottom: -40px;
+        left: 43%;
+        right: 43%;
+    }
+    .acc_detail{
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+.cross_button img{
+    position: absolute;
+    top: 4px;
+    left: 8px;
+    font-size: 22px;
+    padding: 10px;
+    clip-path: circle(50% at 50% 50%);
+    cursor: pointer;
+}
+    .container{
+        position: relative;
+    }
+
+</style>
+</head>
+
+    <div class="container" id="container">
+    <style type="text/css">
+	@media print {
+    @page {size: A4 ;}}</style>
+
+            <div class="cross_button" onclick="window.history.back()">
+               <img src="{% static 'img/arrow_back.svg' %}" alt="">
+            </div>
+    <button onclick="printDiv('Customer_detail')"> Print Statement</button>
+        <div class="cust_detail" id="Customer_detail">
+        <h2>Customer Account Statement</h2>
+        <div class="acc_detail">
+            <div>
+            <p><b>Account Type:</b> {{user.account_type}}</p>
+            <p><b>Account Title:</b> {{user.full_name}}</p>
+                <p><b>Account Number:</b> {{user.account_number}}</p>
+        </div>
+        <div class="row_1">
+
+            <p><b>Current Balance:</b> ${{user.current_balance|floatformat:2}}</p>
+            <p><b>Account Opening Date:</b> {{user.created_at|date}}</p>
+            <p><b>Address:</b> {{user.address}}</p>
+        </div>
+        </div>
+
+        <div class="arr_table">
+            <h3>Account Transactions Details</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Description</th>
+                        <th>Debit</th>
+                        <th>Credit</th>
+                        <th>Balance</th>
+
+                    </tr>
+                </thead>
+
+               <tbody>
+                   {% for h in history %}
+                <tr>
+                    <td>{{h.date}}</td>
+                    <td>{{h.time}}</td>
+                    <td class="name">{{h.description}}</td>
+                    <td class="email">{% if h.dr != 0 %}${{h.dr|floatformat:2}}{% endif %}</td>
+                    <td class="email">{% if h.cr != 0 %}${{h.cr|floatformat:2}}{% endif %}</td>
+                    <td class="cur_balance">${{h.balance|floatformat:2}}</td>
+
+                </tr>
+                {% empty %}
+                       <b id="empty_msg">No Data Available</b>
+               {% endfor %}
+               </tbody>
+
+
+
+
+
+
+            </table>
+<h3>Closing Balance: ${{ user.current_balance|floatformat:2 }}</h3>
+        </div>
+
+       
+        </div>
+    </div>
+
+   <script type="text/javascript">
+	function printDiv(divName) {
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+	 //location.reload();
+}
+</script>
+    {% endblock %}

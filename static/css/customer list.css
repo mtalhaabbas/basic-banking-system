@@ -1,0 +1,88 @@
+*{
+    padding: 0%;
+    margin: 0%;
+}
+
+/* header  */
+header{
+    z-index: 1;
+    background-color: #60ba5f;  
+}
+header h1 {
+    color: white;
+    font-size: 27px;
+    padding: 10px 0 10px 10px;
+    
+}
+
+
+
+/* customer list  */
+
+
+.container {
+    display: block;
+    margin: 30px auto;
+    
+    width: 80%;
+    box-shadow: 1px 4px 21px 3px rgb(229 229 229 / 98%);
+    border: 5px solid white;
+    padding: 20px 30px;
+    border-radius: 7px;
+}
+
+
+
+
+
+h2{
+    margin-bottom: 20px;
+}
+
+table{
+    width: 100%;
+    font-size: 18px;
+    border-collapse: collapse;
+    margin: 10px 0px;
+   
+}
+table, th, td {
+    
+    border: 1px solid black;
+}
+table th{
+    
+    background-color: #60ba5f;
+    color: white;
+}
+table th, table td {
+    padding: 8px 10px;
+    
+    /* border-collapse: collapse; */
+}
+table tbody tr{
+    transition: 0.5s ease-in;
+}
+table tbody tr:hover{
+    background-color: #60ba5f;
+    color: white;
+    cursor: pointer;
+}
+
+.cust_detail{
+    overflow-x: auto;
+}
+
+@media screen and (max-width: 500px) {
+    table {
+        font-size: 15px;
+    }    
+    h2
+    {
+        font-size: 16px;
+    }
+    .container {
+        margin: 14px auto;
+        padding: 11px 18px;
+    }
+}

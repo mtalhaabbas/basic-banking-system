@@ -1,0 +1,103 @@
+*{
+    padding: 0%;
+    margin: 0%;
+}
+
+/* header  */
+header{
+    z-index: 1;
+    
+    background-color: #60ba5f;
+    
+}
+header h1 {
+    color: white;
+    font-size: 27px;
+    padding: 10px 0 10px 10px;
+    
+}
+
+/* index  */
+
+
+#box::before{
+    
+        content: "";
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background-image: url('img/bank 2.jpg');
+        filter: brightness(0.5);
+        background-position: center; /* Center the image */
+        background-repeat: no-repeat; /* Do not repeat the image */
+        background-size: cover;
+     
+    
+}
+#box{
+    
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    z-index: -1;
+    display: flex;
+    flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     height: 100vh;
+     
+}
+#box button{
+    padding: 8px 12px 8px 12px;
+    color: white;
+    border-radius: 3px;
+    margin:30px 0px 30px 0px ;
+    position: relative;
+    top: 20px;
+    
+    color: white;
+    background: transparent;
+    border: 2px solid white;
+    font-size: 16px;
+    transition: 0.7s ease-in;
+    cursor: pointer;
+}
+#box h2{
+    color: white;
+    position: relative;
+    top: 30px;
+    line-height: 37px;
+    font-size: 26px;
+    padding: 0px 20px;
+    text-align: center;
+}
+
+#box button:hover{
+    background-color: #60ba5f;
+    color: white;
+    border: 2px solid #60ba5f;
+    
+    
+}
+
+
+
+@media screen and (max-width: 500px) {
+    #box h2 {
+        line-height: 26px;
+        padding: 0px 30px;
+        font-size: 20px;
+    }    
+    #box button {
+        padding: 7px 10px 7px 10px;
+        color: white;
+        border-radius: 3px;
+        margin: 25px 0px 30px 0px;
+        position: relative;
+        top: 20px;
+        color: white;
+        background: transparent;
+        border: 2px solid white;
+        font-size: 15px;
+    }
+}

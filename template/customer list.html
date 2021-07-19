@@ -1,0 +1,63 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<head>
+    
+    <link rel="stylesheet" href="{% static 'css/customer list.css' %}">
+    <title>Customer List</title>
+<style>
+    .cross_button img{
+    position: absolute;
+    top: 4px;
+    left: 8px;
+    font-size: 22px;
+    padding: 10px;
+    clip-path: circle(50% at 50% 50%);
+    cursor: pointer;
+}
+    .container{
+        position: relative;
+        padding-top: 50px;
+    }
+</style>
+</head>
+
+    <div class="container">
+
+            <div class="cross_button" onclick="window.history.back()">
+               <img src="{% static 'img/arrow_back.svg' %}" alt="">
+            </div>
+        <h2>Customer Details</h2>
+        <div class="cust_detail">
+            
+           
+            <table>
+                <thead>
+                    <tr>
+                        <th>Account Type</th>
+                        <th>Account No#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Current Balance</th>
+                        
+                    </tr>
+                </thead>
+                
+               <tbody>
+                {% for c in customers %}
+                <tr onclick="window.location.href='/customer/{{c.account_number}}';">
+                    <td>{{c.account_type}}</td>
+                    <td>{{c.account_number}}</td>
+                    <td class="name">{{c.full_name}}</td>
+                    <td class="email">{{c.email}}</td>
+                    <td class="cur_balance">${{c.current_balance|floatformat:2}}</td>
+                    
+                </tr>
+                {% empty %}
+                No Data Avaiable
+               {% endfor %}
+               </tbody>
+               
+               
+            </table>
+        </div>
+    </div>
+    {% endblock %}

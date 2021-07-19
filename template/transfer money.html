@@ -1,0 +1,123 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<head>
+    
+    <link rel="stylesheet" href="{% static 'css/customer list.css' %}">
+     <link rel="stylesheet" href="{% static 'css/single customer.css' %}">
+    <title>Customer List</title>
+<style>
+
+
+    .blur {
+        filter: blur(4px);
+    }
+       .cross_button1 img{
+    position: absolute;
+    top: 4px;
+    left: 8px;
+    font-size: 22px;
+    padding: 10px;
+    clip-path: circle(50% at 50% 50%);
+    cursor: pointer;
+}
+    .container{
+        position: relative;
+        padding-top: 50px;
+    }
+    input::placeholder{
+    color: rgba(0, 0, 0, 0.27);
+}
+    .popup button{
+        display: block;
+        margin: 10px auto;
+    }
+</style>
+</head>
+
+    <div class="container ">
+
+
+        <div class="cust_detail" id="customer_deatil">
+        <div class="cross_button1" onclick="window.history.back()">
+               <img src="{% static 'img/arrow_back.svg' %}" alt="">
+            </div>
+           <h2>Receiver Accounts Details</h2>
+           
+            <table>
+                <thead>
+                    <tr>
+                        <th>Account Type</th>
+                        <th>Account No#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        
+                        
+                    </tr>
+                </thead>
+                
+               <tbody>
+                {% for c in receiver %}
+                <tr onclick="open_box('popups{{c.id}}')">
+                    <td>{{c.account_type}}</td>
+                    <td>{{c.account_number}}</td>
+                    <td class="name">{{c.full_name}}</td>
+                    <td class="email">{{c.email}}</td>
+                </tr>
+
+
+
+
+                {% empty %}
+                No Data Available
+
+               {% endfor %}
+               </tbody>
+               
+               
+            </table>
+        </div>
+
+
+    </div>
+      {% for c in receiver %}
+    <form class="popup" id="popups{{c.id}}" method="post">
+            <div class="cross_button" onclick="close_box('popups{{c.id}}')">
+               <img src="{% static 'img/clear_black.svg' %}" alt="">
+            </div>
+            <div class="conn">
+
+                <p><b>Receiver Name:</b> {{c.full_name}}&nbsp;</p>
+                <p><b>Receiver Account:</b> {{c.account_number}}&nbsp;</p>
+<br>
+                <p><b>Sender Name: </b>&nbsp;{{ sender.full_name }}</p>
+                <p><b>Sender Account: </b>&nbsp;{{ sender.account_number }}</p>
+                <p><b>Current Balance: </b>&nbsp;${{sender.current_balance|floatformat:2}}</p>
+                <div>
+                    <input type="text"  name="receiver" value="{{c.account_number}}" style="display: none">
+                    <input type="number" step="any" name="amount" id="customer" placeholder="Amount (example : $102.2)">
+                </div>
+
+                <button type="submit">Transfer Now</button>
+            </div>
+        </form>
+
+ {% endfor %}
+    <script>
+        function open_box(id){
+            console.log(id)
+            document.getElementById(id).style.display = 'block';
+            document.getElementById('customer_deatil').classList.add('blur')
+            document.getElementById('head').classList.add('blur')
+            console.log('open')
+        }
+        function close_box(id){
+            document.getElementById(id).style.display = 'none';
+            document.getElementById('customer_deatil').classList.remove('blur')
+            document.getElementById('head').classList.remove('blur')
+            console.log('close')
+        }
+    </script>
+
+
+
+
+    {% endblock %}

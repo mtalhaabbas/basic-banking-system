@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<head>
+     <link rel="stylesheet" href="{% static 'css/index.css' %}">
+<style>
+    #box::before {
+        background-image: url('{% static 'img/bank 2.jpg' %}');
+    }
+</style>
+</head>
+
+   
+    <div id="box">
+        <h2>We Tried to provide best banking experience <br> And help ypu to transfer your money easily</h2>
+        <button onclick="window.location.href='/all-customer';">View All Customer</button>
+    </div>
+
+{% endblock %}

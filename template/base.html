@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Banking System || Talha Abbas</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <style>
+        /* header  */
+        header {
+            z-index: 1;
+            background-color: #60ba5f;
+        }
+        header h1 {
+            color: white;
+            font-size: 27px;
+            padding: 10px 0 10px 10px;
+        }
+    </style>
+</head>
+<body>
+    <header id="head">
+        <h1 onclick="window.location.href='/';">Basic Banking System</h1>
+    </header>
+    {% block content %} {% endblock %}
+</body>
+
+</html>
